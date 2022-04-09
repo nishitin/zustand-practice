@@ -1,7 +1,13 @@
-import type { NextPage } from 'next'
+import { TodoScreen } from '../components/screens/TodoScreens'
 
-const Home: NextPage = () => {
-  return <div></div>
+const App = () => {
+  return (
+    <div>
+      <div>
+        <TodoScreen />
+      </div>
+    </div>
+  )
 }
 
-export default Home
+export default App
