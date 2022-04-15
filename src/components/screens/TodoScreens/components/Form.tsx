@@ -1,15 +1,19 @@
-import { HtmlProps } from 'next/dist/shared/lib/html-context'
 import { ChangeEvent, useState } from 'react'
-import { useTodoScreenState } from './hooks'
+import { Button } from './ Button'
 
 export const Form = () => {
-  const { name, onChangeForm } = useTodoScreenState()
+  const [text, setText] = useState<string>('')
+
+  const onChangeForm = (e: ChangeEvent<HTMLInputElement>) => {
+    setText(e.target.value)
+  }
 
   return (
     <div>
       <form>
-        <input placeholder="タスク名" value={name} onChange={onChangeForm} />
+        <input placeholder="タスク名" value={text} onChange={onChangeForm} />
       </form>
+      <Button text={text} />
     </div>
   )
 }

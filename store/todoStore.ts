@@ -1,11 +1,17 @@
-import create from 'zustand/react'
+import create from 'zustand'
 import { Todo } from '../types/Todo'
 
 export const todoStore = create<Todo>((set) => ({
-  todos: [],
-  addTodo: () =>
+  todos: [], //ここがstate
+  addTodo: (text) =>
     set((state: any) => ({
-      todos: [...state.todos, {}],
+      todos: [
+        ...state.todos,
+        {
+          text: text,
+          completed: false,
+        },
+      ],
     })),
   removeTodo: (id: string) =>
     set((state: any) => ({
