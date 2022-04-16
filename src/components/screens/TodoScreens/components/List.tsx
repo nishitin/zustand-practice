@@ -1,9 +1,8 @@
 import React from 'react'
 import { todoStore } from '../../../../../store/todoStore'
-import { Todo } from '../../../../../types/Todo'
 
 export const List = () => {
-  const { todos } = todoStore()
+  const { todos, removeTodo } = todoStore((state) => state)
   return (
     <div>
       {todos.map((e: any) => {
@@ -11,7 +10,7 @@ export const List = () => {
           <div key={e.id}>
             <div>{e.text}</div>
             <div>{e.completed! ? '完了' : '未完了'}</div>
-            <button>削除</button>
+            <button onClick={() => removeTodo(e.id)}>削除</button>
           </div>
         )
       })}
