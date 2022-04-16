@@ -1,5 +1,6 @@
 import create from 'zustand'
 import { Todo } from '../types/Todo'
+import { uid } from 'uid'
 
 export const todoStore = create<Todo>((set) => ({
   todos: [], //ここがstate
@@ -9,6 +10,7 @@ export const todoStore = create<Todo>((set) => ({
         ...state.todos,
         {
           text: text,
+          id: uid(), // uiを使ってidを付与
           completed: false,
         },
       ],
